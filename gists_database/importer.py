@@ -31,5 +31,6 @@ def import_gists_to_database(db, username, commit=True):
                                 comments,comments_url) VALUES (?,?,?,?,?,?,?,?,?,?,?);"""
     cursor = conn.cursor()
     cursor.executemany(query, parameters)
-    conn.commit()
+    if commit == True:
+        conn.commit()
     return gists
